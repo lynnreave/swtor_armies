@@ -1,0 +1,854 @@
+#####################################
+# Imperial Armies
+#####################################
+
+# Garrison Divisions
+imp_garrison_div = {
+	defensive = yes
+	time = 60
+	health = 1.0
+	damage = 1.0
+	icon_frame = 17
+	maintenance = 0.15
+	cost = {
+		minerals = 30
+	}
+	prerequisites = { "tech_assault_armies" }
+	potential = {
+		owner = {
+			OR = {
+				has_authority = auth_sith_dark_council
+			}
+		}
+	}
+}
+
+# Trooper Divisions
+imp_trooper_div = {
+	damage = 1.20
+	health = 1.15
+	morale = 1.15
+	time = 90
+	maintenance = 0.33
+	icon_frame = 17
+	cost = {
+		minerals = 60
+	}
+	prerequisites = { "tech_assault_armies" }
+	potential = {
+		owner = {
+			OR = {
+				has_authority = auth_sith_dark_council
+			}
+		}
+	}
+}
+
+# Heavy Trooper Divisions
+imp_heavy_trooper_div = {
+	damage = 1.25
+	health = 1.15
+	morale = 1.20
+	time = 93
+	maintenance = 0.33
+	icon_frame = 17
+	cost = {
+		minerals = 70
+	}
+	prerequisites = { "tech_assault_armies" }
+	potential = {
+		owner = {
+			OR = {
+				has_authority = auth_sith_dark_council
+			}
+		}
+	}
+}
+
+# Recon Trooper Regiments
+imp_recon_reg = {
+	damage = 1.35
+	health = 1.20
+	morale = 1.50
+	time = 95
+	maintenance = 0.38
+	icon_frame = 17
+	cost = {
+		minerals = 77
+	}
+	prerequisites = { "tech_assault_armies" }
+	potential = {
+		owner = {
+			OR = {
+				has_authority = auth_sith_dark_council
+			}
+		}
+	}
+}
+
+# SO Trooper Batallions
+imp_specops_bat = {
+	damage = 1.45
+	morale_damage = 0.25
+	health = 1.40
+	morale = 1.70
+	time = 110
+	maintenance = 0.55
+	icon_frame = 17
+	cost = {
+		minerals = 90
+		energy = 75
+	}
+	prerequisites = { "tech_assault_armies" }
+	potential = {
+		owner = {
+			OR = {
+				has_authority = auth_sith_dark_council
+			}
+		}
+	}
+}
+
+# Mobile Assault Brigades
+imp_mobile_assault_bde = {
+	damage = 1.75
+	morale_damage = 0.35
+	health = 1.75
+	morale = 1.80
+	time = 130
+	maintenance = 0.75
+	icon_frame = 17
+	cost = {
+		minerals = 130
+		energy = 135
+	}
+	prerequisites = { "tech_assault_armies" }
+	potential = {
+		owner = {
+			OR = {
+				has_authority = auth_sith_dark_council
+			}
+		}
+	}
+}
+
+# Emperor's Royal Guard
+imp_emp_guard_co = {
+	damage = 1.85
+	morale_damage = 0.25
+	health = 1.75
+	morale = 2.0
+	time = 120
+	maintenance = 0.5
+	icon_frame = 17
+	cost = {
+		minerals = 115
+		energy = 80
+	}
+	built_for_ruler = yes
+	potential = {
+		owner = {
+			OR = {
+				has_authority = auth_sith_dark_council
+			}
+			exists = ruler
+			ruler = {
+				NOT = { has_leader_flag = has_elite_guard }
+			}
+		}
+	}
+	allow = {
+		custom_tooltip = {
+			text = elite_guard_army_trigger_tooltip
+			owner = {
+				exists = ruler
+				ruler = {
+					NOT = { has_leader_flag = has_elite_guard }
+				}
+			}
+		}
+	}
+	on_queued = {
+		owner = {
+			ruler = {
+				set_leader_flag = has_elite_guard
+			}
+		}
+	}
+	on_unqueued = {
+		owner = {
+			ruler = {
+				remove_leader_flag = has_elite_guard
+			}
+		}
+	}
+}
+
+#####################################
+# Force Armies
+#####################################
+
+# Force Adepts
+
+force_adept = {
+	damage = 2.0
+	morale_damage = 1.5
+	health = 1.5
+	morale = 3.0
+	time = 360
+	maintenance = 0.8
+	icon_frame = 13
+	
+	cost = {
+		minerals = 250
+		energy = 50
+	}
+	allow = {
+		OR = {
+			has_building = "building_force_academy"
+			has_building = "building_force_great_academy"
+		}
+	}
+	prerequisites = { "tech_force_I" }
+	potential = {
+		from = {
+			OR = {
+				has_trait = trait_latent_psionic
+				has_trait = trait_psionic
+			}
+			NOR = {
+				has_trait = "trait_robotic_1"
+				has_trait = "trait_robotic_2"
+				has_trait = "trait_robotic_3"
+				is_sapient = no
+			}
+		}
+	}
+}
+
+sith_apprentice = {
+	damage = 2.0
+	morale_damage = 2.0
+	health = 1.5
+	morale = 3.0
+	time = 360
+	maintenance = 0.8
+	icon_frame = 13
+	
+	cost = {
+		minerals = 250
+		energy = 50
+	}
+	allow = {
+		OR = {
+			has_building = "building_force_academy"
+			has_building = "building_force_great_academy"
+		}
+	}
+	prerequisites = { "tech_force_I" }
+	potential = {
+		from = {
+			OR = {
+				has_trait = trait_latent_psionic
+				has_trait = trait_psionic
+			}
+			NOR = {
+				has_trait = "trait_robotic_1"
+				has_trait = "trait_robotic_2"
+				has_trait = "trait_robotic_3"
+				is_sapient = no
+			}
+		}
+		owner = {
+			has_authority = auth_sith_dark_council
+			OR = {
+				has_ethic = ethic_dark_side
+			}
+		}
+	}
+}
+
+jedi_padawan = {
+	damage = 2.0
+	morale_damage = 1.5
+	health = 1.5
+	morale = 3.5
+	time = 360
+	maintenance = 0.8
+	icon_frame = 13
+	
+	cost = {
+		minerals = 250
+		energy = 50
+	}
+	allow = {
+		OR = {
+			has_building = "building_force_academy"
+			has_building = "building_force_great_academy"
+		}
+	}
+	prerequisites = { "tech_force_I" }
+	potential = {
+		from = {
+			OR = {
+				has_trait = trait_latent_psionic
+				has_trait = trait_psionic
+			}
+			NOR = {
+				has_trait = "trait_robotic_1"
+				has_trait = "trait_robotic_2"
+				has_trait = "trait_robotic_3"
+				is_sapient = no
+			}
+		}
+		owner = {
+			has_authority = auth_galactic_senate
+			OR = {
+				has_ethic = ethic_light_side
+			}
+		}
+	}
+}
+
+# Force Warriors
+
+force_warrior = {
+	damage = 3.0
+	morale_damage = 1.5
+	health = 3.0
+	morale = 3.0
+	time = 720
+	maintenance = 1.5
+	icon_frame = 13
+	
+	cost = {
+		minerals = 250
+		energy = 250
+	}
+	allow = {
+	OR = {
+		has_building = "building_force_academy"
+		has_building = "building_force_great_academy"
+		}
+	}
+	prerequisites = { "tech_force_II" }
+	potential = {
+		from = {
+			OR = {
+				has_trait = trait_psionic
+			}
+			NOR = {
+				has_trait = "trait_robotic_1"
+				has_trait = "trait_robotic_2"
+				has_trait = "trait_robotic_3"
+				is_sapient = no
+			}
+		}
+	}
+}
+
+sith_warrior = {
+	damage = 3.5
+	morale_damage = 2.5
+	health = 3.0
+	morale = 3.0
+	time = 720
+	maintenance = 1.5
+	icon_frame = 13
+	
+	cost = {
+		minerals = 250
+		energy = 250
+	}
+	allow = {
+	OR = {
+		has_building = "building_force_academy"
+		has_building = "building_force_great_academy"
+		}
+	}
+	prerequisites = { "tech_force_II" }
+	potential = {
+		from = {
+			OR = {
+				has_trait = trait_psionic
+			}
+			NOR = {
+				has_trait = "trait_robotic_1"
+				has_trait = "trait_robotic_2"
+				has_trait = "trait_robotic_3"
+				is_sapient = no
+			}
+		}
+		owner = {
+			has_authority = auth_sith_dark_council
+			OR = {
+				has_ethic = ethic_dark_side
+			}
+		}
+	}
+}
+
+jedi_knight = {
+	damage = 3.0
+	morale_damage = 1.5
+	health = 3.5
+	morale = 4.0
+	time = 720
+	maintenance = 1.5
+	icon_frame = 13
+	
+	cost = {
+		minerals = 250
+		energy = 250
+	}
+	allow = {
+	OR = {
+		has_building = "building_force_academy"
+		has_building = "building_force_great_academy"
+		}
+	}
+	prerequisites = { "tech_force_II" }
+	potential = {
+		from = {
+			OR = {
+				has_trait = trait_psionic
+			}
+			NOR = {
+				has_trait = "trait_robotic_1"
+				has_trait = "trait_robotic_2"
+				has_trait = "trait_robotic_3"
+				is_sapient = no
+			}
+		}
+		owner = {
+			has_authority = auth_galactic_senate
+			OR = {
+				has_ethic = ethic_light_side
+			}
+		}
+	}
+}
+
+# Force Inquisitors
+
+force_inquisitor = {
+	damage = 1.5
+	morale_damage = 25.0
+	health = 1.0
+	morale = 3.0
+	time = 720
+	maintenance = 1.5
+	icon_frame = 13
+	
+	cost = {
+		minerals = 250
+		energy = 150
+	}
+	allow = {
+	OR = {
+		has_building = "building_force_academy"
+		has_building = "building_force_great_academy"
+		}
+		has_building = "building_force_library"
+	}
+	prerequisites = { "tech_force_II" }
+	potential = {
+		from = {
+			OR = {
+				has_trait = trait_psionic
+			}
+			NOR = {
+				has_trait = "trait_robotic_1"
+				has_trait = "trait_robotic_2"
+				has_trait = "trait_robotic_3"
+				is_sapient = no
+			}
+		}
+	}
+}
+
+sith_inquisitor = {
+	damage = 2.5
+	morale_damage = 25.0
+	health = 2.0
+	morale = 3.0
+	time = 720
+	maintenance = 1.5
+	icon_frame = 13
+	
+	cost = {
+		minerals = 250
+		energy = 150
+	}
+	allow = {
+	OR = {
+		has_building = "building_force_academy"
+		has_building = "building_force_great_academy"
+		}
+		has_building = "building_force_library"
+	}
+	prerequisites = { "tech_force_II" }
+	potential = {
+		from = {
+			OR = {
+				has_trait = trait_psionic
+			}
+			NOR = {
+				has_trait = "trait_robotic_1"
+				has_trait = "trait_robotic_2"
+				has_trait = "trait_robotic_3"
+				is_sapient = no
+			}
+		}
+		owner = {
+			has_authority = auth_sith_dark_council
+			OR = {
+				has_ethic = ethic_dark_side
+			}
+		}
+	}
+}
+
+jedi_consular = {
+	damage = 1.5
+	morale_damage = 25.0
+	health = 2.0
+	morale = 4.0
+	time = 720
+	maintenance = 1.5
+	icon_frame = 13
+	
+	cost = {
+		minerals = 250
+		energy = 150
+	}
+	allow = {
+	OR = {
+		has_building = "building_force_academy"
+		has_building = "building_force_great_academy"
+		}
+		has_building = "building_force_library"
+	}
+	prerequisites = { "tech_force_II" }
+	potential = {
+		from = {
+			OR = {
+				has_trait = trait_psionic
+			}
+			NOR = {
+				has_trait = "trait_robotic_1"
+				has_trait = "trait_robotic_2"
+				has_trait = "trait_robotic_3"
+				is_sapient = no
+			}
+		}
+		owner = {
+			has_authority = auth_galactic_senate
+			OR = {
+				has_ethic = ethic_light_side
+			}
+		}
+	}
+}
+
+# Force Masters
+
+force_master = {
+	damage = 5.0
+	morale_damage = 5.0
+	health = 4.0
+	morale = 5.0
+	time = 1080
+	maintenance = 2.0
+	icon_frame = 13
+	
+	cost = {
+		minerals = 350
+		energy = 350
+	}
+	allow = {
+		has_building = "building_force_great_academy"
+	}
+	prerequisites = { "tech_force_IV" }
+	potential = {
+		from = {
+			OR = {
+				has_trait = trait_psionic
+			}
+			NOR = {
+				has_trait = "trait_robotic_1"
+				has_trait = "trait_robotic_2"
+				has_trait = "trait_robotic_3"
+				is_sapient = no
+			}
+		}
+	}
+}
+
+sith_lord = {
+	damage = 6.0
+	morale_damage = 6.5
+	health = 4.0
+	morale = 5.0
+	time = 1080
+	maintenance = 2.0
+	icon_frame = 13
+	
+	cost = {
+		minerals = 350
+		energy = 350
+	}
+	allow = {
+		has_building = "building_force_great_academy"
+	}
+	prerequisites = { "tech_force_IV" }
+	potential = {
+		from = {
+			OR = {
+				has_trait = trait_psionic
+			}
+			NOR = {
+				has_trait = "trait_robotic_1"
+				has_trait = "trait_robotic_2"
+				has_trait = "trait_robotic_3"
+				is_sapient = no
+			}
+		}
+		owner = {
+			has_authority = auth_sith_dark_council
+			OR = {
+				has_ethic = ethic_dark_side
+			}
+		}
+	}
+}
+
+jedi_master = {
+	damage = 5.0
+	morale_damage = 5.0
+	health = 5.0
+	morale = 6.5
+	time = 1080
+	maintenance = 2.0
+	icon_frame = 13
+	
+	cost = {
+		minerals = 350
+		energy = 350
+	}
+	allow = {
+		has_building = "building_force_great_academy"
+	}
+	prerequisites = { "tech_force_IV" }
+	potential = {
+		from = {
+			OR = {
+				has_trait = trait_psionic
+			}
+			NOR = {
+				has_trait = "trait_robotic_1"
+				has_trait = "trait_robotic_2"
+				has_trait = "trait_robotic_3"
+				is_sapient = no
+			}
+		}
+		owner = {
+			has_authority = auth_galactic_senate
+			OR = {
+				has_ethic = ethic_light_side
+			}
+		}
+	}
+}
+
+###########Clone ARMIES
+###################
+
+clone_shock = {
+	defensive = yes
+	damage = 2.0
+	health = 2.0
+	morale = 2.0
+	time = 30
+	maintenance = 0.33
+	icon_frame = 7
+	
+	cost = {
+		minerals = 75
+	}
+	
+	prerequisites = { "tech_advanced_air_operations" }
+	
+	allow = {
+		has_building = "building_clone_vats"
+	}
+	potential = {
+		from = {
+			NOR = {
+				has_trait = "trait_robotic_1"
+				has_trait = "trait_robotic_2"
+				has_trait = "trait_robotic_3"
+				is_sapient = no
+			}
+		}
+	}
+}
+
+clone_paratrooper = {
+	damage = 2.25
+	health = 1.5
+	morale = 3.0
+	time = 30
+	maintenance = 0.33
+	icon_frame = 7
+	
+	cost = {
+		minerals = 100
+	}
+	
+	prerequisites = { "tech_advanced_air_operations" }
+	
+	allow = {
+		has_building = "building_clone_vats"
+	}
+	potential = {
+		from = {
+			NOR = {
+				has_trait = "trait_robotic_1"
+				has_trait = "trait_robotic_2"
+				has_trait = "trait_robotic_3"
+				is_sapient = no
+			}
+		}
+	}
+}
+
+clone_commando = {
+	damage = 2.5
+	morale_damage = 0.5
+	health = 2.0
+	morale = 2.0
+	time = 30
+	maintenance = 0.33
+	icon_frame = 7
+	
+	cost = {
+		minerals = 150
+		energy = 150
+	}
+	
+	prerequisites = { "tech_special_operations_command" }
+	
+	allow = {
+		has_building = "building_clone_vats"
+	}
+	potential = {
+		from = {
+			NOR = {
+				has_trait = "trait_robotic_1"
+				has_trait = "trait_robotic_2"
+				has_trait = "trait_robotic_3"
+				is_sapient = no			
+			}
+		}
+	}
+}
+
+clone_arc = {	
+	damage = 2.75
+	morale_damage = 1.5
+	health = 3.0
+	morale = 4.0
+	time = 30
+	maintenance = 0.33
+	icon_frame = 7
+	
+	cost = {
+		minerals = 200
+		energy = 200
+	}
+	
+	prerequisites = { "tech_special_operations_command" }
+	
+	allow = {
+		has_building = "building_clone_vats"
+	}
+	potential = {
+		from = {
+			NOR = {
+				has_trait = "trait_robotic_1"
+				has_trait = "trait_robotic_2"
+				has_trait = "trait_robotic_3"
+				is_sapient = no
+			}
+		}
+	}
+}
+
+air_defense_tower = {
+	defensive = yes
+	damage = 5.00
+	health = 100
+	time = 120
+	maintenance = 5.00
+	icon_frame = 14
+	has_species = no
+	
+	cost = {
+		minerals = 150
+		energy = 20
+	}
+	
+	prerequisites = { "tech_fixed_defenses" }
+}
+
+turbolaser_tower = {
+	defensive = yes
+	damage = 15.00
+	health = 150
+	time = 120
+	maintenance = 10.00
+	icon_frame = 15
+	has_species = no
+	
+	cost = {
+		minerals = 150
+		energy = 20
+	}
+	allow = {
+		
+		has_building = "building_turbolaser_central_command"
+	OR = {
+		has_building = "building_power_plant_1"
+		has_building = "building_power_plant_2"
+		has_building = "building_power_plant_3"
+		has_building = "building_power_plant_4"
+		has_building = "building_power_plant_5"
+		
+		}
+	}
+	
+	prerequisites = { "tech_advanced_target_tracking" }
+}
+
+magnapulse_canon = {
+	defensive = yes
+	damage = 10.00
+	morale_damage = 2.0
+	health = 100
+	time = 120
+	maintenance = 15.00
+	icon_frame = 16
+	has_species = no
+	
+	cost = {
+		minerals = 150
+		energy = 20
+	}
+	allow = {
+	
+		has_building = "building_magnapulse_canon"
+	}
+	
+	prerequisites = { "tech_heavy_plasma_ballistics" }
+}

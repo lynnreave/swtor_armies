@@ -1,0 +1,50 @@
+# Possible Values:
+# cost, resource table.
+# potential, trigger, scope is army type.
+# allow, trigger, scope is army type.
+# modifier, modifier. applies to army and army ship.
+# ai_weight, default = 100
+
+# SPMA Battery
+spma = {
+	icon = "gfx/interface/icons/army_attachments/attachment_spma.dds"
+	cost = { minerals = 45 energy = 20 }
+	modifier = {
+		army_damage_mult = 0.13
+		army_morale = 0.08
+	}
+}
+
+# Walker Detachment
+imp_walker = {
+	icon = "gfx/interface/icons/army_attachments/attachment_imp_walker.dds"
+	cost = { minerals = 23 }
+	
+	modifier = {
+		army_damage_mult = 0.12
+	}
+	potential = { owner = { has_authority = auth_sith_dark_council } }
+}
+
+# Bomber Wing
+imp_bomber = {
+	icon = "gfx/interface/icons/army_attachments/attachment_imp_bomber.dds"
+	cost = { minerals = 30 }
+	
+	modifier = {
+		army_damage_mult = 0.15
+	}
+	potential = { owner = { has_authority = auth_sith_dark_council } }
+}
+
+# Crawler Tank Detachment
+imp_tank = {
+	icon = "gfx/interface/icons/army_attachments/attachment_imp_tank.dds"
+	cost = { minerals = 50 energy = 25 }
+	
+	modifier = {
+		army_damage_mult = 0.17
+		army_morale = 0.15
+	}
+	potential = { owner = { has_authority = auth_sith_dark_council } }
+}
